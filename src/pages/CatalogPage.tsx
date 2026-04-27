@@ -53,7 +53,7 @@ export function CatalogPage() {
       {/* Page title */}
       <Box mb="6">
         <Text fontFamily="heading" fontWeight="800" fontSize={{ base: '24px', md: '32px' }} color="#001747">
-          Catálogo de Formación 2025
+          Catálogo de Formación 2026
         </Text>
         <Text fontSize="15px" color="#7A90A8" mt="1">
           {COURSES.length} formaciones · {filters.areas.length > 0 ? filters.areas.join(', ') : 'Todas las áreas'}

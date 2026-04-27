@@ -27,7 +27,7 @@ export function Footer() {
             </Box>
           </Flex>
           <Text fontSize="13px" color="rgba(255,255,255,0.6)" maxW="260px">
-            Catálogo de Formación 2025 — Desarrollando el talento de quienes cuidan el agua de Chile.
+            Catálogo de Formación 2026 — Desarrollando el talento de quienes cuidan el agua de Chile.
           </Text>
         </Box>
 
@@ -57,7 +57,7 @@ export function Footer() {
         borderTop="1px solid rgba(255,255,255,0.1)">
         <Flex justify="space-between" align="center" direction={{ base: 'column', md: 'row' }} gap="2">
           <Text fontSize="12px" color="rgba(255,255,255,0.4)">
-            © 2025 Aguas Andinas S.A. Todos los derechos reservados.
+            © 2026 Aguas Andinas S.A. Todos los derechos reservados.
           </Text>
           <Text fontSize="12px" color="rgba(255,255,255,0.3)">
             Desarrollado por Umine · Catálogo Interno de Formación

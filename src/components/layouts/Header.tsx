@@ -38,7 +38,7 @@ export function Header() {
                 AGUAS ANDINAS
               </Text>
               <Text fontSize="10px" fontWeight="500" color="#00A0C6" letterSpacing="0.05em" lineHeight="1">
-                CATÁLOGO DE FORMACIÓN 2025
+                CATÁLOGO DE FORMACIÓN 2026
               </Text>
             </Box>
           </Flex>

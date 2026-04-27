@@ -9,30 +9,31 @@ import { WaterBackground } from '../components/atoms/WaterBackground'
 
 const MotionBox = motion(Box)
 
-function useCountUp(target: number, duration = 1500) {
+// Animates from 0 to target when active=true. Fast easing (~900ms).
+function useCountUp(target: number, active: boolean, duration = 900) {
   const [val, setVal] = useState(0)
-  const ref = useRef(false)
   useEffect(() => {
-    if (ref.current) return
-    ref.current = true
+    if (!active || target === 0) return
+    let rafId: number
     const start = performance.now()
     const frame = (now: number) => {
       const progress = Math.min((now - start) / duration, 1)
-      const ease = 1 - Math.pow(1 - progress, 3)
-      setVal(Math.floor(ease * target))
-      if (progress < 1) requestAnimationFrame(frame)
+      // Exponential ease-out: fast start, gentle finish
+      const ease = 1 - Math.pow(1 - progress, 4)
+      setVal(Math.round(ease * target))
+      if (progress < 1) { rafId = requestAnimationFrame(frame) }
       else setVal(target)
     }
-    setTimeout(() => requestAnimationFrame(frame), 400)
-  }, [target, duration])
+    rafId = requestAnimationFrame(frame)
+    return () => cancelAnimationFrame(rafId)
+  }, [active, target, duration])
   return val
 }
 
 function StatCard({ value, label, icon }: { value: number; label: string; icon: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true })
-  const count = inView ? value : 0
-  const display = useCountUp(count)
+  const inView = useInView(ref, { once: true, margin: '0px 0px -40px 0px' })
+  const display = useCountUp(value, inView)
   return (
     <Box ref={ref}
       bg="rgba(255,255,255,0.12)" borderRadius="16px"
@@ -90,7 +91,7 @@ export function LandingPage() {
           >
             <Box w="6px" h="6px" borderRadius="full" bg="#00A0C6" />
             <Text fontSize="12px" fontWeight="600" color="rgba(0,200,240,0.95)" letterSpacing="0.08em">
-              CATÁLOGO OFICIAL DE FORMACIÓN 2025
+              CATÁLOGO OFICIAL DE FORMACIÓN 2026
             </Text>
           </MotionBox>
 
