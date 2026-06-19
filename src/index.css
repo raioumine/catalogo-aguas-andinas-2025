@@ -1,20 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap');
+
 *, *::before, *::after { box-sizing: border-box; }
 
 html, body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', system-ui, sans-serif;
-  background: #F0F5FA;
-  color: #001747;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  background: #EEF3FB;
+  color: #001435;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #F0F5FA; }
-::-webkit-scrollbar-thumb { background: #002B7240; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #002B7280; }
+::-webkit-scrollbar-track { background: #EEF3FB; }
+::-webkit-scrollbar-thumb { background: #004C9440; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #004C9480; }
 
 /* Remove default button styles */
 button { cursor: pointer; }
@@ -25,6 +27,12 @@ button { cursor: pointer; }
   25% { transform: translate(20px, -20px) scale(1.05); }
   50% { transform: translate(-10px, 15px) scale(0.95); }
   75% { transform: translate(15px, 10px) scale(1.02); }
+}
+
+/* Wave drift animation */
+@keyframes waveDrift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* Fade in */
@@ -38,5 +46,20 @@ html { scroll-behavior: smooth; }
 
 /* Input reset */
 input, textarea, select {
-  font-family: inherit;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Gold shimmer for highlight text */
+@keyframes goldPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+/* Accessibility: respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -52,28 +52,43 @@ export function CatalogPage() {
     <Box maxW="1280px" mx="auto" px={{ base: '4', md: '6', lg: '8' }} py={{ base: '6', md: '8' }}>
       {/* Page title */}
       <Box mb="6">
-        <Text fontFamily="heading" fontWeight="800" fontSize={{ base: '24px', md: '32px' }} color="#001747">
+        <Text fontFamily="heading" fontWeight="800" fontSize={{ base: '22px', md: '30px' }} color="#001435"
+          letterSpacing="-0.02em">
           Catálogo de Formación 2026
         </Text>
-        <Text fontSize="15px" color="#7A90A8" mt="1">
-          {COURSES.length} formaciones · {filters.areas.length > 0 ? filters.areas.join(', ') : 'Todas las áreas'}
-        </Text>
+        <Flex align="center" gap="2" mt="1">
+          <Text fontSize="14px" color="#6A7E98" fontWeight="400">
+            {COURSES.length} formaciones
+          </Text>
+          {filters.areas.length > 0 && (
+            <>
+              <Box w="3px" h="3px" borderRadius="full" bg="#EFA220" />
+              <Text fontSize="14px" color="#004C94" fontWeight="600">{filters.areas.join(', ')}</Text>
+            </>
+          )}
+          {filters.areas.length === 0 && (
+            <>
+              <Box w="3px" h="3px" borderRadius="full" bg="#D8E4F0" />
+              <Text fontSize="14px" color="#9AACC0" fontWeight="400">Todas las áreas</Text>
+            </>
+          )}
+        </Flex>
       </Box>
 
       {/* Search + controls bar */}
       <Flex
         gap="3" mb="6" align="center"
         bg="white" borderRadius="14px" p="3"
-        boxShadow="0 2px 10px rgba(0,43,114,0.07)"
-        border="1px solid rgba(0,43,114,0.08)"
+        boxShadow="0 2px 12px rgba(0,20,53,0.06)"
+        border="1px solid rgba(0,76,148,0.07)"
         flexWrap={{ base: 'wrap', md: 'nowrap' }}
       >
         {/* Search input */}
         <div style={{
           display: 'flex', alignItems: 'center', gap: '10px', flex: 1, minWidth: '200px',
-          background: '#F5F8FF', borderRadius: '10px', padding: '0 12px', height: '42px',
+          background: '#EEF3FB', borderRadius: '10px', padding: '0 12px', height: '42px',
         }}>
-          <Search size={16} color="#9AACC0" />
+          <Search size={15} color="#9AACC0" />
           <input
             ref={inputRef}
             value={filters.search}
@@ -81,12 +96,12 @@ export function CatalogPage() {
             placeholder="Buscar formación, objetivo, área…"
             style={{
               flex: 1, border: 'none', outline: 'none', background: 'transparent',
-              fontSize: '14px', color: '#001747', fontFamily: 'Inter, sans-serif',
+              fontSize: '13px', color: '#001435', fontFamily: 'Montserrat, sans-serif', fontWeight: 500,
             }}
           />
           {filters.search && (
             <div style={{ cursor: 'pointer' }} onClick={() => setFilters(f => ({ ...f, search: '' }))}>
-              <X size={14} color="#9AACC0" />
+              <X size={13} color="#9AACC0" />
             </div>
           )}
         </div>
@@ -94,17 +109,19 @@ export function CatalogPage() {
         {/* Filter toggle (mobile) */}
         <Flex
           align="center" gap="2" px="4" h="42px" borderRadius="10px" cursor="pointer"
-          bg={showFilters ? '#002B72' : '#F5F8FF'} color={showFilters ? 'white' : '#002B72'}
-          fontWeight="600" fontSize="13px"
+          bg={showFilters ? '#004C94' : '#EEF3FB'}
+          color={showFilters ? 'white' : '#004C94'}
+          fontWeight="700" fontSize="13px"
           onClick={() => setShowFilters(v => !v)}
           display={{ base: 'flex', lg: 'none' }}
           position="relative"
+          transition="all 0.2s"
         >
-          <SlidersHorizontal size={15} />
+          <SlidersHorizontal size={14} />
           Filtros
           {activeFiltersCount > 0 && (
             <Box position="absolute" top="-4px" right="-4px"
-              w="18px" h="18px" borderRadius="full" bg="#00A0C6"
+              w="18px" h="18px" borderRadius="full" bg="#EFA220"
               display="flex" alignItems="center" justifyContent="center"
               fontSize="10px" fontWeight="700" color="white">
               {activeFiltersCount}
@@ -113,25 +130,26 @@ export function CatalogPage() {
         </Flex>
 
         {/* View toggle */}
-        <Flex bg="#F5F8FF" borderRadius="10px" overflow="hidden" h="42px" flexShrink={0}>
+        <Flex bg="#EEF3FB" borderRadius="10px" overflow="hidden" h="42px" flexShrink={0}>
           {(['grid', 'list'] as const).map(v => (
             <Flex key={v} w="42px" align="center" justify="center" cursor="pointer"
-              bg={view === v ? '#002B72' : 'transparent'} color={view === v ? 'white' : '#9AACC0'}
-              onClick={() => setView(v)} transition="all 0.2s">
-              {v === 'grid' ? <LayoutGrid size={15}/> : <List size={15}/>}
+              bg={view === v ? '#004C94' : 'transparent'}
+              color={view === v ? 'white' : '#9AACC0'}
+              onClick={() => setView(v)} transition="all 0.18s">
+              {v === 'grid' ? <LayoutGrid size={14}/> : <List size={14}/>}
             </Flex>
           ))}
         </Flex>
 
         {/* Result count */}
-        <Text fontSize="13px" color="#7A90A8" fontWeight="500" flexShrink={0} display={{ base: 'none', md: 'block' }}>
-          <Text as="span" fontWeight="700" color="#002B72">{filtered.length}</Text> resultados
+        <Text fontSize="13px" color="#6A7E98" fontWeight="500" flexShrink={0} display={{ base: 'none', md: 'block' }}>
+          <Text as="span" fontWeight="800" color="#004C94">{filtered.length}</Text> resultados
         </Text>
       </Flex>
 
       {/* Main layout: sidebar + grid */}
       <Flex gap="6" align="flex-start">
-        {/* Sidebar — desktop always visible, mobile conditionally */}
+        {/* Sidebar */}
         <Box
           w="280px" flexShrink={0}
           display={{ base: showFilters ? 'block' : 'none', lg: 'block' }}
@@ -145,7 +163,7 @@ export function CatalogPage() {
           maxH={{ base: '75vh', lg: 'calc(100vh - 96px)' }}
           overflowY="auto"
           borderTopRadius={{ base: '20px', lg: '0' }}
-          boxShadow={{ base: '0 -4px 40px rgba(0,43,114,0.15)', lg: 'none' }}
+          boxShadow={{ base: '0 -4px 40px rgba(0,20,53,0.18)', lg: 'none' }}
           p={{ base: '4', lg: '0' }}
         >
           {/* Mobile drag handle */}
@@ -161,7 +179,7 @@ export function CatalogPage() {
           <Box
             display={{ base: 'block', lg: 'none' }}
             position="fixed" inset="0" zIndex="149"
-            bg="rgba(0,23,71,0.4)" backdropFilter="blur(2px)"
+            bg="rgba(0,20,53,0.45)" backdropFilter="blur(3px)"
             onClick={() => setShowFilters(false)}
           />
         )}
@@ -196,20 +214,25 @@ function EmptyState({ onClear }: { onClear: () => void }) {
     <Box
       textAlign="center" py="16" px="8"
       bg="white" borderRadius="16px"
-      border="1px dashed rgba(0,43,114,0.15)"
+      border="1px dashed rgba(0,76,148,0.15)"
+      boxShadow="0 2px 12px rgba(0,20,53,0.04)"
     >
-      <Text fontSize="40px" mb="3">🔍</Text>
-      <Text fontFamily="heading" fontWeight="700" fontSize="20px" color="#001747" mb="2">
+      <Box fontSize="40px" mb="3">🔍</Box>
+      <Text fontFamily="heading" fontWeight="800" fontSize="20px" color="#001435" mb="2" letterSpacing="-0.01em">
         No encontramos formaciones
       </Text>
-      <Text fontSize="14px" color="#7A90A8" mb="5">
+      <Text fontSize="14px" color="#6A7E98" mb="6" fontWeight="400">
         Intenta con otros términos o elimina algunos filtros.
       </Text>
       <Box
         as="button" onClick={onClear}
         px="6" py="3" borderRadius="10px"
-        bg="#002B72" color="white" fontWeight="600" fontSize="14px"
+        bg="linear-gradient(135deg, #004C94 0%, #003060 100%)"
+        color="white" fontWeight="700" fontSize="13px"
         border="none" cursor="pointer"
+        fontFamily="Montserrat, sans-serif"
+        letterSpacing="0.02em"
+        boxShadow="0 4px 16px rgba(0,76,148,0.3)"
         style={{ transition: 'all 0.2s' }}
       >
         Limpiar filtros

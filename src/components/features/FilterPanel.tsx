@@ -38,31 +38,38 @@ export function FilterPanel({ filters, onChange, resultCount }: Props) {
   return (
     <Box
       bg="white" borderRadius="16px"
-      border="1px solid rgba(0,43,114,0.09)"
-      boxShadow="0 2px 12px rgba(0,43,114,0.05)"
+      border="1px solid rgba(0,76,148,0.08)"
+      boxShadow="0 2px 16px rgba(0,20,53,0.06)"
       overflow="hidden"
     >
+      {/* Gold top accent */}
+      <Box h="3px" bg="linear-gradient(90deg, #004C94, #EFA220, #398245)" />
+
       {/* Header */}
       <Flex
         align="center" justify="space-between"
-        px="4" py="4"
-        borderBottom="1px solid rgba(0,43,114,0.07)"
-        bg="rgba(0,43,114,0.02)"
+        px="4" py="3.5"
+        borderBottom="1px solid rgba(0,76,148,0.06)"
+        bg="rgba(0,76,148,0.02)"
       >
         <Flex align="center" gap="2">
-          <SlidersHorizontal size={15} color="#002B72" />
-          <Text fontWeight="700" fontSize="14px" color="#001747">Filtros</Text>
+          <SlidersHorizontal size={14} color="#004C94" />
+          <Text fontWeight="700" fontSize="13px" color="#001435" letterSpacing="0.01em">Filtros</Text>
           {activeCount > 0 && (
-            <Box px="2" py="0.5" borderRadius="full" bg="#002B72" color="white" fontSize="11px" fontWeight="700">
+            <Box px="2" py="0.5" borderRadius="full"
+              bg="#EFA220" color="white"
+              fontSize="11px" fontWeight="700">
               {activeCount}
             </Box>
           )}
         </Flex>
         {activeCount > 0 && (
           <Text
-            fontSize="12px" fontWeight="600" color="#00A0C6" cursor="pointer"
+            fontSize="12px" fontWeight="700" color="#004C94" cursor="pointer"
+            letterSpacing="0.02em"
             onClick={() => onChange({ search: filters.search, areas: [], modalidades: [], audiencias: [], sistemas: [] })}
-            _hover={{ color: '#0077A0' }}
+            _hover={{ color: '#EFA220' }}
+            transition="color 0.15s"
           >
             Limpiar
           </Text>
@@ -70,25 +77,28 @@ export function FilterPanel({ filters, onChange, resultCount }: Props) {
       </Flex>
 
       {/* Result count */}
-      <Box px="4" py="3" borderBottom="1px solid rgba(0,43,114,0.06)" bg="rgba(0,160,198,0.04)">
-        <Text fontSize="13px" color="#5A6A85">
-          <Text as="span" fontWeight="700" color="#002B72">{resultCount}</Text> formaciones encontradas
+      <Box px="4" py="3" borderBottom="1px solid rgba(0,76,148,0.05)" bg="rgba(0,76,148,0.02)">
+        <Text fontSize="13px" color="#4A5E7A" fontWeight="400">
+          <Text as="span" fontWeight="800" color="#004C94">{resultCount}</Text> formaciones encontradas
         </Text>
       </Box>
 
       {/* Active filter chips */}
       {activeCount > 0 && (
-        <Box px="4" py="3" borderBottom="1px solid rgba(0,43,114,0.06)">
+        <Box px="4" py="3" borderBottom="1px solid rgba(0,76,148,0.05)">
           <Flex gap="2" flexWrap="wrap">
             {[...filters.areas, ...filters.modalidades, ...filters.audiencias].map(chip => (
-              <Flex key={chip} align="center" gap="1" px="2" py="1" borderRadius="full"
-                bg="#EEF2FF" color="#002B72" fontSize="11px" fontWeight="600" cursor="pointer"
+              <Flex key={chip} align="center" gap="1" px="2.5" py="1" borderRadius="full"
+                bg="rgba(0,76,148,0.08)" color="#004C94"
+                fontSize="11px" fontWeight="700" cursor="pointer"
+                border="1px solid rgba(0,76,148,0.15)"
                 onClick={() => {
                   if (filters.areas.includes(chip)) toggleFilter('areas', chip)
                   else if (filters.modalidades.includes(chip)) toggleFilter('modalidades', chip)
                   else toggleFilter('audiencias', chip)
                 }}
-                _hover={{ bg: '#E0E8FF' }}
+                _hover={{ bg: 'rgba(239,162,32,0.12)', color: '#D48A0A', borderColor: 'rgba(239,162,32,0.3)' }}
+                transition="all 0.15s"
               >
                 {chip.length > 18 ? chip.substring(0, 18) + '…' : chip}
                 <X size={10} />
@@ -130,28 +140,30 @@ function FilterSection({
   onToggleItem: (v: string) => void
 }) {
   return (
-    <Box borderBottom="1px solid rgba(0,43,114,0.06)">
+    <Box borderBottom="1px solid rgba(0,76,148,0.05)">
       <Flex
         align="center" justify="space-between" px="4" py="3"
         cursor="pointer" onClick={onToggle}
-        _hover={{ bg: 'rgba(0,43,114,0.02)' }}
+        _hover={{ bg: 'rgba(0,76,148,0.02)' }}
+        transition="bg 0.15s"
       >
-        <Text fontWeight="600" fontSize="13px" color="#001747">{label}</Text>
-        {open ? <ChevronUp size={14} color="#9AACC0" /> : <ChevronDown size={14} color="#9AACC0" />}
+        <Text fontWeight="700" fontSize="12px" color="#001435" letterSpacing="0.03em" textTransform="uppercase">
+          {label}
+        </Text>
+        {open ? <ChevronUp size={13} color="#9AACC0" /> : <ChevronDown size={13} color="#9AACC0" />}
       </Flex>
       {open && (
-        <Box px="4" pb="3" display="flex" flexDirection="column" gap="1.5">
+        <Box px="4" pb="3" display="flex" flexDirection="column" gap="1">
           {items.map(item => {
             const active = selected.includes(item)
             return (
               <Flex key={item} align="center" gap="2.5" cursor="pointer"
-                onClick={() => onToggleItem(item)} py="1"
-                _hover={{ '& .cb': { borderColor: '#00A0C6' } }}
+                onClick={() => onToggleItem(item)} py="1.5"
               >
                 {/* Custom checkbox */}
                 <Box className="cb" w="16px" h="16px" borderRadius="4px" flexShrink={0}
-                  border="1.5px solid" borderColor={active ? '#002B72' : '#C8D4E0'}
-                  bg={active ? '#002B72' : 'white'}
+                  border="1.5px solid" borderColor={active ? '#004C94' : '#C8D4E0'}
+                  bg={active ? '#004C94' : 'white'}
                   display="flex" alignItems="center" justifyContent="center"
                   transition="all 0.15s"
                 >
@@ -161,8 +173,8 @@ function FilterSection({
                     </svg>
                   )}
                 </Box>
-                <Text fontSize="13px" color={active ? '#001747' : '#5A6A85'}
-                  fontWeight={active ? '600' : '400'} flex="1">
+                <Text fontSize="13px" color={active ? '#001435' : '#4A5E7A'}
+                  fontWeight={active ? '700' : '400'} flex="1">
                   {item}
                 </Text>
                 {counts[item] !== undefined && (
