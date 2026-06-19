@@ -33,26 +33,26 @@ const config = defineConfig({
           600: { value: '#2D6636' },
           700: { value: '#1E4A25' },
         },
-        // Paleta complementaria completa — Manual de Marca Aguas Andinas
-        p293: {   // Azul oscuro profundo
-          500: { value: '#1D3C8F' },
+        // Paleta complementaria completa — valores Pantone oficiales
+        p293: {   // Azul navy profundo
+          500: { value: '#003DA5' },
         },
         p2935: {  // Azul medio brillante
-          500: { value: '#0041A8' },
+          500: { value: '#0047BB' },
         },
         p2915: {  // Azul cielo claro
-          500: { value: '#6AB4E8' },
+          500: { value: '#6CACE4' },
         },
         p2995: {  // Cyan proceso
-          500: { value: '#00A9E0' },
+          500: { value: '#00B2E3' },
         },
         p7467: {  // Verde teal
-          500: { value: '#009B96' },
+          500: { value: '#009A8D' },
         },
-        p376: {   // Verde lima brillante
-          500: { value: '#72BF44' },
+        p376: {   // Verde lima
+          500: { value: '#78BE20' },
         },
-        p137: {   // Dorado/naranja oficial
+        p137: {   // Dorado oficial
           500: { value: '#EFA220' },
         },
         brandPurple: {

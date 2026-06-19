@@ -45,29 +45,29 @@ export function WaterBackground() {
         <HojaGrafica size={120} opacity={0.12} />
       </div>
 
-      {/* Gota cyan grande — top left */}
+      {/* Gota cyan 2995c — top left */}
       <div style={{ position: 'absolute', top: '-5%', left: '10%', animation: 'blobDrift 14s ease-in-out 3s infinite' }}>
-        <Gota color="#00A9E0" size={200} rotate={20} opacity={0.10} />
+        <Gota color="#00B2E3" size={200} rotate={20} opacity={0.10} />
       </div>
 
-      {/* Gota azul medio — left lower */}
+      {/* Gota azul 2935c — left lower */}
       <div style={{ position: 'absolute', bottom: '15%', left: '-2%', animation: 'blobDrift 18s ease-in-out 7s infinite reverse' }}>
-        <Gota color="#0041A8" size={140} rotate={45} opacity={0.12} />
+        <Gota color="#0047BB" size={140} rotate={45} opacity={0.12} />
       </div>
 
-      {/* Gota azul claro — center right */}
+      {/* Gota azul cielo 2915c — center right */}
       <div style={{ position: 'absolute', bottom: '20%', right: '18%', animation: 'blobDrift 22s ease-in-out 2s infinite' }}>
-        <Gota color="#6AB4E8" size={100} rotate={-15} opacity={0.14} />
+        <Gota color="#6CACE4" size={100} rotate={-15} opacity={0.14} />
       </div>
 
-      {/* Gota pequeña navy — bottom center */}
+      {/* Gota navy 293c — bottom center */}
       <div style={{ position: 'absolute', bottom: '8%', left: '45%', animation: 'blobDrift 12s ease-in-out 9s infinite reverse' }}>
-        <Gota color="#1D3C8F" size={70} rotate={60} opacity={0.15} />
+        <Gota color="#003DA5" size={70} rotate={60} opacity={0.15} />
       </div>
 
-      {/* Gota teal — top center */}
+      {/* Gota teal 7467c — top center */}
       <div style={{ position: 'absolute', top: '5%', left: '45%', animation: 'blobDrift 25s ease-in-out 4s infinite' }}>
-        <Gota color="#009B96" size={90} rotate={-45} opacity={0.10} />
+        <Gota color="#009A8D" size={90} rotate={-45} opacity={0.10} />
       </div>
 
       {/* ── Olas corporativas animadas ── */}
