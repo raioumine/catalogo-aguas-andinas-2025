@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from '@chakra-ui/react'
+import { Box, Flex, Image, Text } from '@chakra-ui/react'
 import { Link, useLocation } from 'react-router'
 import { BookOpen, Home } from 'lucide-react'
 
@@ -24,30 +24,17 @@ export function Header() {
         {/* Logo */}
         <Link to="/" style={{ textDecoration: 'none' }}>
           <Flex align="center" gap="3">
+            <Image
+              src="/logo-aguas-horizontal.png"
+              alt="Aguas Andinas"
+              h={{ base: '32px', md: '38px' }} w="auto"
+              objectFit="contain" flexShrink={0}
+            />
             <Box
-              w="38px" h="38px" borderRadius="10px" flexShrink={0}
-              bg="linear-gradient(145deg, #004C94 0%, #003060 100%)"
-              display="flex" alignItems="center" justifyContent="center"
-              boxShadow="0 3px 10px rgba(0,76,148,0.35)"
-              position="relative" overflow="hidden"
+              pl="3" borderLeft="1px solid rgba(0,76,148,0.15)"
+              display={{ base: 'none', sm: 'block' }}
             >
-              {/* Ola decorativa dentro del ícono */}
-              <svg style={{ position: 'absolute', bottom: 0, left: 0, right: 0 }} viewBox="0 0 38 12" fill="none">
-                <path d="M0,6 C9,10 19,2 28,6 C33,8 36,7 38,6 L38,12 L0,12 Z" fill="rgba(239,162,32,0.35)" />
-              </svg>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style={{ position: 'relative', zIndex: 1 }}>
-                <path d="M12 2C12 2 4 9 4 14a8 8 0 0016 0C20 9 12 2 12 2z" fill="white" opacity="0.95"/>
-                <path d="M12 8C12 8 8 12 8 15a4 4 0 008 0C16 12 12 8 12 8z" fill="rgba(239,162,32,0.7)"/>
-              </svg>
-            </Box>
-            <Box>
-              <Text
-                fontFamily="heading" fontWeight="800" fontSize="14px"
-                color="#004C94" lineHeight="1.2" letterSpacing="-0.01em"
-              >
-                AGUAS ANDINAS
-              </Text>
-              <Text fontSize="9.5px" fontWeight="600" color="#EFA220" letterSpacing="0.08em" lineHeight="1">
+              <Text fontSize="10px" fontWeight="700" color="#EFA220" letterSpacing="0.08em" lineHeight="1.2">
                 CATÁLOGO DE FORMACIÓN 2026
               </Text>
             </Box>
