@@ -260,13 +260,14 @@ export function LandingPage() {
           </Text>
           <Flex gap="3" flexWrap="wrap" justify="center">
             {[
-              'ISO 45001',
+              'ISO 9001',
               'ISO 14001',
+              'ISO 22301',
               'ISO 27001',
               'ISO 37001',
-              'ISO 9001',
-              'ISO 22301',
+              'ISO 45001',
               'ISO 50001',
+              'ISO 55001',
               'NCH 3262',
             ].map(iso => (
               <Box key={iso}
