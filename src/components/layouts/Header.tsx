@@ -35,7 +35,7 @@ export function Header() {
               display={{ base: 'none', sm: 'block' }}
             >
               <Text fontSize="10px" fontWeight="700" color="#EFA220" letterSpacing="0.08em" lineHeight="1.2">
-                CATÁLOGO DE FORMACIÓN 2026
+                CATÁLOGO DE FORMACIÓN 2025 - 2026
               </Text>
             </Box>
           </Flex>

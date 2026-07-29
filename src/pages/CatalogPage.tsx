@@ -54,7 +54,7 @@ export function CatalogPage() {
       <Box mb="6">
         <Text fontFamily="heading" fontWeight="800" fontSize={{ base: '22px', md: '30px' }} color="#001435"
           letterSpacing="-0.02em">
-          Catálogo de Formación 2026
+          Catálogo de Formación 2025 - 2026
         </Text>
         <Flex align="center" gap="2" mt="1">
           <Text fontSize="14px" color="#6A7E98" fontWeight="400">

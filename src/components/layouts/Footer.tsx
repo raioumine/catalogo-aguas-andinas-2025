@@ -32,7 +32,7 @@ export function Footer() {
               />
             </Flex>
             <Text fontSize="13px" color="rgba(255,255,255,0.55)" maxW="260px" lineHeight="1.7">
-              Catálogo de Formación 2026 — Desarrollando el talento de quienes cuidan el agua de Chile.
+              Catálogo de Formación 2025 - 2026 — Desarrollando el talento de quienes cuidan el agua de Chile.
             </Text>
 
             {/* Color strip como en el manual de marca */}

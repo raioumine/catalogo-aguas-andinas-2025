@@ -97,7 +97,7 @@ export function LandingPage() {
           >
             <Box w="6px" h="6px" borderRadius="full" bg="#EFA220" style={{ animation: 'goldPulse 2s ease-in-out infinite' }} />
             <Text fontSize="11px" fontWeight="700" color="#EFA220" letterSpacing="0.1em" textTransform="uppercase">
-              Catálogo Oficial de Formación 2026
+              Catálogo Oficial de Formación 2025 - 2026
             </Text>
           </MotionBox>
 
@@ -260,16 +260,16 @@ export function LandingPage() {
           </Text>
           <Flex gap="3" flexWrap="wrap" justify="center">
             {[
-              { label: 'ISO 45001', sub: 'Seguridad' },
-              { label: 'ISO 14001', sub: 'Ambiental' },
-              { label: 'ISO 27001', sub: 'TI' },
-              { label: 'ISO 37001', sub: 'Antisoborno' },
-              { label: 'ISO 9001', sub: 'Calidad' },
-              { label: 'ISO 22301', sub: 'Continuidad' },
-              { label: 'ISO 50001', sub: 'Energía' },
-              { label: 'NCH 3262', sub: 'Género' },
+              'ISO 45001',
+              'ISO 14001',
+              'ISO 27001',
+              'ISO 37001',
+              'ISO 9001',
+              'ISO 22301',
+              'ISO 50001',
+              'NCH 3262',
             ].map(iso => (
-              <Box key={iso.label}
+              <Box key={iso}
                 px="4" py="2.5" borderRadius="10px"
                 bg="rgba(255,255,255,0.06)"
                 border="1px solid rgba(239,162,32,0.2)"
@@ -278,7 +278,7 @@ export function LandingPage() {
                 letterSpacing="-0.01em"
                 style={{ transition: 'all 0.2s', cursor: 'default' }}
               >
-                {iso.label} <Text as="span" color="#EFA220" fontWeight="600">· {iso.sub}</Text>
+                {iso}
               </Box>
             ))}
           </Flex>
