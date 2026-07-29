@@ -62,7 +62,7 @@ export function Footer() {
                 Sistemas de Gestión
               </Text>
               <Flex direction="column" gap="2.5">
-                {['ISO 45001 SSO', 'ISO 14001 Ambiental', 'ISO 27001 TI', 'ISO 37001 Compliance'].map(l => (
+                {['ISO 45001', 'ISO 14001', 'ISO 27001', 'ISO 37001'].map(l => (
                   <Text key={l} fontSize="13px" color="rgba(255,255,255,0.5)" fontWeight="400">{l}</Text>
                 ))}
               </Flex>
