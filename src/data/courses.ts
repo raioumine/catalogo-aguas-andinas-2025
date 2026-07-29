@@ -29,6 +29,11 @@ function normalizeAudiencia(raw: string): string {
   return toTitleCase(raw.substring(0, 40))
 }
 
+function sistemaCode(raw: string): string {
+  // Solo el código de la norma (ISO 45001, NCH 3262…), sin la descripción tras el guion
+  return /^(ISO|NCH)\b/.test(raw.trim()) ? raw.split(/\s[-–—]\s/)[0].trim() : raw.trim()
+}
+
 type RawCourse = { orden: number; area: string; sistema: string; nombre: string; objetivo: string; dirigido: string; modalidad: string }
 
 const raw: RawCourse[] = [
@@ -127,7 +132,7 @@ export const COURSES: Course[] = raw.map((r, i) => ({
   id: `course-${String(i + 1).padStart(3, '0')}`,
   orden: r.orden,
   area: normalizeArea(r.area),
-  sistemaGestion: r.sistema,
+  sistemaGestion: sistemaCode(r.sistema),
   nombre: r.nombre,
   objetivo: r.objetivo,
   dirigido: r.dirigido,
