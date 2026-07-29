@@ -108,7 +108,7 @@ export function LandingPage() {
               fontSize={{ base: '36px', md: '54px', lg: '62px' }}
               color="white" lineHeight="1.05" mb="4" letterSpacing="-0.02em"
             >
-              Desarrollamos el talento<br />
+              Desarrollando el talento<br />
               <Text as="span"
                 style={{
                   background: 'linear-gradient(90deg, #EFA220, #FFCF4A)',
@@ -117,7 +117,7 @@ export function LandingPage() {
                   backgroundClip: 'text',
                 }}
               >
-                que cuida el agua
+                que impulsa la sostenibilidad, la innovación y el servicio
               </Text>
             </Text>
           </MotionBox>
